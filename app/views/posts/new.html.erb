@@ -2,7 +2,7 @@
 
 <%= render 'form', post: @post %>
 
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Back', posts_path, class: 'btn btn-primary' %>
 
-<%= link_to 'Show User Post', posts_path %>
+<%= link_to "#{current_user.first_name} Post", posts_path, class: 'btn btn-primary' %>
 

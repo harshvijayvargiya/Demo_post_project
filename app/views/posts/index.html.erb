@@ -16,10 +16,10 @@
       <tr>
         <td><%= image_tag post.attachment.url %></td>
         <td><%= post.content %></td>
-        <td><%= link_to "Download" , post.attachment.url%></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "Download" , post.attachment.url, class: 'btn btn-primary'%></td>
+        <td><%= link_to 'Show', post, class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) , class: 'btn btn-primary'%></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,6 +27,6 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %>
 
-<%= link_to 'All Post', all_user_post_posts_path %>
+<%= link_to 'All Post', all_user_post_posts_path, class: 'btn btn-primary' %>

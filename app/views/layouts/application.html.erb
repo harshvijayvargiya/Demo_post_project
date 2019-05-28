@@ -12,15 +12,15 @@
   <body>
     <% if user_signed_in? %>
         <li>
-          <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-          <%= link_to('New Post',  new_post_path) %>
+          <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-danger', method: :delete) %>
+          <%= link_to('New Post',  new_post_path, class: 'btn btn-info') %>
         </li>
       <% else %>
         <li>
-          <%= link_to('Login', new_user_session_path)  %> 
+          <%= link_to('Login', new_user_session_path, class: 'btn btn-info')  %> 
         </li>
         <li>
-          <%= link_to('Create an account', new_user_registration_path)  %>
+          <%= link_to('Create an account', new_user_registration_path, class: 'btn btn-primary')  %>
         </li>
       <% end %>
     <p class="notice"><%= notice %></p>
