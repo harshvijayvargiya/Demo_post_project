@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -9,6 +10,12 @@
   <strong>Content:</strong>
   <%= @post.content %>
 </p>
+
+<% if current_user %>
+      Attachment: <%= rating_for @post, 'attachment', star: 10 %>
+      <br>
+      Content: <%= rating_for @post, "content" %>
+    <% end %>
 
 <%if (user_signed_in? && (current_user.role == 'admin') || (current_user.id == @post.user_id)) %>
 <%= link_to 'Edit', edit_post_path(@post) %>|

@@ -279,6 +279,7 @@ GEM
       activerecord (>= 5.0)
       activesupport (>= 5.0)
       i18n
+    ratyrate (1.2.2.alpha)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
@@ -397,6 +398,7 @@ DEPENDENCIES
   puma (~> 3.11)
   pundit
   rails (~> 5.2.3)
+  ratyrate
   rubocop
   sass-rails (~> 5.0)
   sassc-rails (>= 2.1.0)
