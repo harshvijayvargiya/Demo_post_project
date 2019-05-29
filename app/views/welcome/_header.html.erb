@@ -1,1 +1,65 @@
-_header.html.erb
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DemoPostProject</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <script type="text/javascript">
+
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+  }
+
+  </script>
+
+  <body>
+
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
+    <%= link_to 'Home', posts_path %>
+   
+  </div>
+
+  
+
+  <div class="jumbotron text-center" id="main">
+    <button class="openbtn" onclick="openNav()">☰ Search Here</button>  
+    <h1>Join Us</h1> 
+    <p>For further details please subscribe</p> 
+    <form>
+      <div class="input-group">
+        <input type="email" class="form-control" size="50" placeholder="Email Address" required>
+        <div class="input-group-btn">
+          <button type="button" class="btn btn-info">Subscribe</button>
+        </div>
+      </div>
+    </form> 
+  </div>
+    <% if user_signed_in? %>
+        <li>
+          <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-danger', method: :delete) %>
+          <%= link_to('New Post',  new_post_path, class: 'btn btn-info') %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to('Login', new_user_session_path, class: 'btn btn-info')  %> 
+        </li>
+        <li>
+          <%= link_to('Create an account', new_user_registration_path, class: 'btn btn-primary')  %>
+        </li>
+      <% end %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>

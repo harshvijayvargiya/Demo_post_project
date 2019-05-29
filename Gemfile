@@ -73,3 +73,6 @@ gem 'sassc-rails', '>= 2.1.0'
 gem 'pry', '~> 0.12.2'
 gem 'letter_opener', group: :development
 gem 'carrierwave', '~> 1.0'
+gem 'omniauth-google-oauth2', '~> 0.2.2'
+gem 'google-api-client', '~> 0.9.1'
+gem 'devise_invitable', '~> 2.0.0'
