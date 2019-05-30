@@ -1,4 +1,5 @@
 class PostsController < InheritedResources::Base
+    impressionist actions: [:show], unique: [:user_id]
 
     def create
         # binding.pry
@@ -7,6 +8,11 @@ class PostsController < InheritedResources::Base
         redirect_to posts_path
     end
 
+    def show
+        # binding.pry
+        @post = Post.find(params[:id])
+        impressionist @post
+    end
     
 
     def index

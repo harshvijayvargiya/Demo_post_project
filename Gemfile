@@ -76,5 +76,6 @@ gem 'carrierwave', '~> 1.0'
 gem 'omniauth-google-oauth2', '~> 0.2.2'
 gem 'google-api-client', '~> 0.9.1'
 gem 'devise_invitable', '~> 2.0.0'
-gem 'ratyrate'
+gem 'ratyrate' # star rating
 gem 'social-share-button'
+gem 'impressionist' # view count

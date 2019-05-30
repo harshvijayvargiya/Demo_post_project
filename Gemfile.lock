@@ -158,6 +158,8 @@ GEM
     hurley (0.2)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
+    impressionist (1.6.1)
+      nokogiri (~> 1)
     inherited_resources (1.10.0)
       actionpack (>= 5.0, < 6.0)
       has_scope (~> 0.6)
@@ -391,6 +393,7 @@ DEPENDENCIES
   devise_invitable (~> 2.0.0)
   draper
   google-api-client (~> 0.9.1)
+  impressionist
   jbuilder (~> 2.5)
   jquery-rails
   letter_opener
