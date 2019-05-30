@@ -12,9 +12,9 @@
 </p>
 
 <% if current_user %>
-      Attachment: <%= rating_for @post, 'attachment', star: 10 %>
+      Attachment: <%= rating_for @post, 'attachment', star: 5, enable_half: true %>
       <br>
-      Content: <%= rating_for @post, "content" %>
+      Content: <%= rating_for @post, "content" , star: 5, enable_half: true%>
     <% end %>
 
 <%if (user_signed_in? && (current_user.role == 'admin') || (current_user.id == @post.user_id)) %>
@@ -22,3 +22,5 @@
 <% end %>
  
 <%= link_to 'Back', posts_path, class: 'btn btn-primary' %>
+
+<%= social_share_button_tag(@post.attachment) %>

@@ -21,6 +21,11 @@
     <%= form.text_area :content %>
   </div>
 
+   <div class="field">
+    <h3><b><%= form.label :Select_Status %><br /></b></h3>
+    <%= form.select :status, ['public', 'private']%>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require rails-ujs
+
 //= require ratyrate
 //= require bootstrap-sprockets
 //= require activestorage
