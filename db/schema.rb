@@ -90,8 +90,9 @@ ActiveRecord::Schema.define(version: 2019_05_30_092644) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.string "status"
     t.integer "impressions_count"
+    t.string "status"
+    t.integer "count", default: 0
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -103,6 +104,7 @@ ActiveRecord::Schema.define(version: 2019_05_30_092644) do
     t.string "dimension"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
     t.index ["rateable_type", "rateable_id"], name: "index_rates_on_rateable_type_and_rateable_id"
     t.index ["rater_id"], name: "index_rates_on_rater_id"
   end

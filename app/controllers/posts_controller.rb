@@ -11,7 +11,14 @@ class PostsController < InheritedResources::Base
     def show
         # binding.pry
         @post = Post.find(params[:id])
+        if @post.count==0
+            @post.increase_visit    
+        end
+        
+        if @post.count==0
         impressionist @post
+        end
+        
     end
     
 
