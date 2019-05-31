@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>DemoPostProject</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>DemoPostProject</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <script type="text/javascript">
-
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<script type="text/javascript">
   function openNav() {
     document.getElementById("mySidebar").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
@@ -20,14 +19,20 @@
     document.getElementById("main").style.marginLeft= "0";
   }
 
-  </script>
+</script>
 
-  <body>
+<body>
 
   <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
-    <%= link_to 'Home', posts_path %>
-   
+    <br>
+    <br>
+    <%= link_to "#{current_user.first_name}'s Post", posts_path, class: 'btn' %>
+    <%= link_to('Create Post',  new_post_path, class: 'btn') %>
+    <%= link_to 'All Post', all_user_post_posts_path, class: 'btn' %>
+    <%= link_to('Send Invitation',  new_user_invitation_path, class: 'btn') %>
+    <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn' %>
+     <%= link_to('Logout', destroy_user_session_path, class: 'btn', method: :delete) %>
   </div>
 
   
@@ -45,21 +50,9 @@
       </div>
     </form> 
   </div>
-    <% if user_signed_in? %>
-        <li>
-          <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-danger', method: :delete) %>
-          <%= link_to('New Post',  new_post_path, class: 'btn btn-info') %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to('Login', new_user_session_path, class: 'btn btn-info')  %> 
-        </li>
-        <li>
-          <%= link_to('Create an account', new_user_registration_path, class: 'btn btn-primary')  %>
-        </li>
-      <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-  </body>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <%= yield %>
+</body>
 </html>

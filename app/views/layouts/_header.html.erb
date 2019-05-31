@@ -1,0 +1,23 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to "DemoPostProject", '#', id: "logo" %>
+          <nav>
+            <ul class="nav pull-right">
+               <% if user_signed_in? %>
+          <%= link_to 'Home',root_url, class:'btn btn-primary'%>
+          <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-danger', method: :delete) %>  
+       
+      <% else %>
+       
+          <%= link_to('Login', new_user_session_path, class: 'btn btn-info')  %> 
+          <%= link_to('Create an account', new_user_registration_path, class: 'btn btn-primary')  %>
+      <% end %>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>

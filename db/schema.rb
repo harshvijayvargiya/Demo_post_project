@@ -90,9 +90,9 @@ ActiveRecord::Schema.define(version: 2019_05_30_092644) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "impressions_count"
     t.string "status"
     t.integer "count", default: 0
+    t.integer "impressions_count"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

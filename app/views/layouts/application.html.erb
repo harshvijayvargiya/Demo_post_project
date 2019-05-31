@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+     <%#= stylesheet_link_tag    "application", media: "all" %>
+    <%= csrf_meta_tags %>
     <title>DemoPostProject</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,25 +12,12 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-        <li>
-          <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-danger', method: :delete) %>
-          <%= link_to('New Post',  new_post_path, class: 'btn btn-info') %>
-          <%= link_to('Send Invitation',  new_user_invitation_path, class: 'btn btn-info') %>
-          <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-info' %>
-
-          
-        </li>
-      <% else %>
-        <li>
-          <%= link_to('Login', new_user_session_path, class: 'btn btn-info')  %> 
-        </li>
-        <li>
-          <%= link_to('Create an account', new_user_registration_path, class: 'btn btn-primary')  %>
-        </li>
-      <% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+     <%= render 'layouts/header' %>
+    <div class="container">
+      <%= yield %>
+    <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>

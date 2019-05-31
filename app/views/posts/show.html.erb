@@ -12,11 +12,11 @@
 </p>
 
 <% if current_user %>
-      Attachment: <%= rating_for @post, 'attachment', star: 5, enable_half: true %>
+      Attachment: <%= rating_for @post, 'attachment', star: 5, enable_half: true, cancel_hint: 'Cancel this rating!' %>
       <br>
       Content: <%= rating_for @post, "content" , star: 5, enable_half: true%>
     <% end %>
-
+<%#=binding.pry%>
 <%if (user_signed_in? && (current_user.role == 'admin') || (current_user.id == @post.user_id)) %>
 <%= link_to 'Edit', edit_post_path(@post) %>|
 <% end %>
