@@ -3,7 +3,7 @@
 
 <p>
   <strong>Attachment:</strong>
-  <%= image_tag @post.attachment.url %>
+  <div><%= image_tag @post.attachment.url, class: "fixshow_image_size" %></div>
 </p>
 
 <p>
@@ -15,15 +15,18 @@
       Attachment: <%= rating_for @post, 'attachment', star: 5, enable_half: true, cancel_hint: 'Cancel this rating!' %>
       <br>
       Content: <%= rating_for @post, "content" , star: 5, enable_half: true%>
-    <% end %>
+<% end %>
 <%#=binding.pry%>
+<div>
 <%if (user_signed_in? && (current_user.role == 'admin') || (current_user.id == @post.user_id)) %>
 <%= link_to 'Edit', edit_post_path(@post) %>|
 <% end %>
- 
+ <div>
 <%= link_to 'Back', posts_path, class: 'btn btn-primary' %>
-
+<br><br>
 <%= social_share_button_tag(@post.attachment) %>
+</div>
 
+<b><%= "#{@post.count} views" %></b><br>
 <b><%= "#{@post.impressionist_count} views" %></b><br>
-<b><%= "#{@post.count} views" %></b>
+</div>

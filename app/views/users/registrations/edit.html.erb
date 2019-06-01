@@ -2,6 +2,26 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+  
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+  </div>  
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autocomplete: "last_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact_number %><br />
+    <%= f.text_field :contact_number, autocomplete: "contact_number" %>
+  </div>
+
+  <div class="field", id="image_preview">
+    <%= f.label :profile_picture %><br />
+    <%= f.file_field :profile_picture, autocomplete: "profile_picture", :onchange => "readURL(this);" %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -41,3 +61,15 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+
+<script>
+
+   $(document).ready(function(){
+   $('input[type="file"]').change(function(){
+     var image = window.URL.createObjectURL(this.files[0]);
+     $("#image_preview").css("background-image", "url(" + image + ")");
+     $("#image_preview").css('height','200');
+     $("#image_preview").css('width','200');
+   });
+});
+    </script>

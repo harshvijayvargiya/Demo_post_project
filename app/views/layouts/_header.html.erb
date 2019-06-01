@@ -1,23 +1,22 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="navbar-inner">
-        <div class="container">
-          <%= link_to "DemoPostProject", '#', id: "logo" %>
-          <nav>
-            <ul class="nav pull-right">
-               <% if user_signed_in? %>
-          <%= link_to 'Home',root_url, class:'btn btn-primary'%>
-          <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-danger', method: :delete) %>  
-       
-      <% else %>
-       
-          <%= link_to('Login', new_user_session_path, class: 'btn btn-info')  %> 
-          <%= link_to('Create an account', new_user_registration_path, class: 'btn btn-primary')  %>
-      <% end %>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </header>
+  <div class="navbar-inner">
+    <div class="header">
+      <%= link_to "Demo Post", '#', id: "logo" %>
+      <nav>
+        <ul class="nav pull-right">
+         <% if user_signed_in? %>
+         <%= link_to 'Home',root_url, class:'btn btn-primary'%>
+         <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-danger', method: :delete) %>
+         <%=image_tag current_user.profile_picture.url, id: "image_profile"%>
+         <% else %>
+         <%= link_to "About",  new_post_path %>
+         <%= link_to "Contact", new_user_registration_path %>
+
+         <%= link_to('Login', new_user_session_path, class: 'btn btn-info')  %> 
+         <%= link_to('Signup', new_user_registration_path, class: 'btn btn-info')  %>
+         <% end %>
+       </ul>
+     </nav>
+   </div>
+ </div>
+</header>

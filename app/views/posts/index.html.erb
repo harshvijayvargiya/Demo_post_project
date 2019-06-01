@@ -3,6 +3,7 @@
 <h1>Posts</h1>
 
 <table>
+  <div id="d1">
   <thead>
     <tr>
       <th>Attachment</th>
@@ -14,7 +15,7 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= image_tag post.attachment.url %></td>
+        <td><%= image_tag post.attachment.url, class: "fix_image_size"   %></td>
         <td><%= post.content %></td>
         <td><%= link_to "Download" , post.attachment.url, class: 'btn btn-primary'%></td>
         <td><%= link_to 'Show', post, class: 'btn btn-primary' %></td>
@@ -23,10 +24,14 @@
       </tr>
     <% end %>
   </tbody>
+  </div>
 </table>
 
 <br>
-
+<div>
 <%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %>
 
 <%= link_to 'All Post', all_user_post_posts_path, class: 'btn btn-primary' %>
+</div>
+<br>
+
