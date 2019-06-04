@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>DemoPostProject</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
 <script type="text/javascript">
   function openNav() {
     document.getElementById("mySidebar").style.width = "250px";
@@ -21,18 +12,18 @@
 
 </script>
 
-<body>
-
   <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
     <br>
     <br>
+    <div class="btn-group-vertical">
     <%= link_to "#{current_user.first_name}'s Post", posts_path, class: 'btn' %>
     <%= link_to('Create Post',  new_post_path, class: 'btn') %>
     <%= link_to 'All Post', all_user_post_posts_path, class: 'btn' %>
     <%= link_to('Send Invitation',  new_user_invitation_path, class: 'btn') %>
     <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn' %>
-     <%= link_to('Logout', destroy_user_session_path, class: 'btn', method: :delete) %>
+    <%= link_to('Logout', destroy_user_session_path, class: 'btn', method: :delete) %>
+    </div>
   </div>
 
   
@@ -52,9 +43,3 @@
       </div>
     </form> 
   </div>
-
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= yield %>
-</body>
-</html>

@@ -14,9 +14,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   
-  # def extension_white_list
-  #     %w(pdf doc htm html docx)
-  # end
+  def extension_whitelist
+      %w(jpeg png)
+  end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)

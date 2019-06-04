@@ -1,6 +1,12 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  validates :first_name,:last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
+    message: "only allows letters" }, length: { maximum: 50 }
+  validates :contact_number, presence: true, numericality: { only_integer: true }, length: { minimum: 10 }
+  validates :profile_picture, presence: true
+  
+  
   ratyrate_rater
   mount_uploader :profile_picture
   devise :invitable, :database_authenticatable, :registerable, :invitable,
