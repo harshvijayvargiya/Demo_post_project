@@ -67,7 +67,6 @@ gem 'activeadmin'
 gem 'cancancan'
 gem 'rubocop'
 gem 'jquery-rails'
-gem 'cancancan'
 gem 'draper'
 gem 'pundit'
 gem 'bootstrap-sass', '~> 3.4.1'
@@ -82,3 +81,4 @@ gem 'ratyrate' # star rating
 gem 'social-share-button'
 gem 'impressionist' # view count
 gem 'kaminari'
+gem 'rmagick'

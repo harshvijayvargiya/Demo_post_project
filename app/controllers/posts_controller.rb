@@ -32,6 +32,9 @@ class PostsController < InheritedResources::Base
     def index
         # binding.pry
         @posts = current_user.posts.order("attachment").page(params[:page]).per(2)
+        if params[:search]
+            @posts = Post.search(params[:search])
+        end
     end
 
     def all_user_post
