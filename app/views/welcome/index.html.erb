@@ -17,9 +17,9 @@
     <br>
     <br>
     <div class="btn-group-vertical">
-    <%= link_to "#{current_user.first_name}'s Post", posts_path, class: 'btn' %>
+    <%= link_to "My Posts", posts_path, class: 'btn' %>
     <%= link_to('Create Post',  new_post_path, class: 'btn') %>
-    <%= link_to 'All Post', all_user_post_posts_path, class: 'btn' %>
+    <%= link_to 'All Posts', all_user_post_posts_path, class: 'btn' %>
     <%= link_to('Send Invitation',  new_user_invitation_path, class: 'btn') %>
     <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn' %>
     <%= link_to('Logout', destroy_user_session_path, class: 'btn', method: :delete) %>

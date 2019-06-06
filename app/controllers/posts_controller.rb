@@ -4,14 +4,12 @@ class PostsController < InheritedResources::Base
   impressionist actions: [:show], unique: [:user_id]
 
   def create
-    # binding.pry
     @post = current_user.posts.create(post_params)
     @post.save
     redirect_to posts_path
   end
 
   def show
-    # binding.pry
     @post = Post.find(params[:id])
     # TODO
     @post.increase_visit if @post.count == 0
@@ -28,13 +26,11 @@ class PostsController < InheritedResources::Base
   end
 
   def index
-    # binding.pry
     @posts = current_user.posts.order('attachment').page(params[:page]).per(2)
     @posts = Post.search(params[:search]) if params[:search]
   end
 
   def all_user_post
-    # binding.pry
     if user_signed_in? && current_user.role == 'admin'
       @posts = Post.all.page(params[:page]).per(2)
     else

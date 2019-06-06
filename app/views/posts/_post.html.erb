@@ -9,7 +9,9 @@
       </tr>
     </div>
   </thead>
-
+  <!-- To do =: Handle condition when user doesn't upload image and create a post
+                Failing on create any post with or without image, attachment url is nil
+                On pagination, it again fails-->
   <tbody>
     <% @posts.each do |post| %>
     <tr>
