@@ -28,6 +28,12 @@ Content: <%= rating_for @post, "content" , star: 5, enable_half: true%><br>
         <%= social_share_button_tag(@post.attachment) %>
     </div>
 
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+
+<h2>Comments</h2>
+<%= render @post.comments %>
+
     <b><%= "#{@post.count} views" %></b><br>
     <b><%= "#{@post.impressionist_count} views" %></b><br>
 </div>

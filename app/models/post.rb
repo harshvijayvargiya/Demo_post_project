@@ -1,27 +1,38 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
- belongs_to :user  
- paginates_per  2
- mount_uploader :attachment
+  belongs_to :user
 
- ratyrate_rateable 'attachment', 'content'
- is_impressionable counter_cache: true
+  has_many :comments, dependent: :destroy
 
- scope :is_public, -> { where(status: 'public') }
- scope :is_private, -> { where(status: 'private') }
+  paginates_per  2
 
-def self.search(search)
-  where("attachment LIKE ?", "%#{search}%") 
-  where("content LIKE ?", "%#{search}%")
-end
+  mount_uploader :attachment
 
+  ratyrate_rateable 'attachment', 'content'
 
+  is_impressionable counter_cache: true
 
- def increase_visit
-  self.count += 1
-  save!
-end
+  scope :is_public, -> { where(status: 'public') }
+  scope :is_private, -> { where(status: 'private') }
 
-   # enum :select_value { is_public: true,  is_private: false}
+  def self.search(search)
+    where('attachment LIKE ?', "%#{search}%")
+    where('content LIKE ?', "%#{search}%")
  end
 
+  def increase_visit
+    self.count += 1
+    save!
+  end
 
+  def abc
+    puts 'aaa'
+  end
+
+   private
+
+  def ab(params)
+    puts "bb #{params}"
+  end
+ end

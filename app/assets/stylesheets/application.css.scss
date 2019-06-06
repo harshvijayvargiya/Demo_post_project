@@ -13,6 +13,7 @@
  *= require social-share-button
  *= require_tree .
  *= require_self
+ *= require commontator/application
  */
 
  @import "bootstrap-sprockets";
@@ -302,4 +303,3 @@ footer ul li {
     padding: 3px;
     border:1px solid black;
   }
-

@@ -1,0 +1,16 @@
+
+
+<p>
+  <strong>Comment:</strong>
+  <%= comment.body %>
+</p>
+<%# binding.pry %>
+<% from_reply_form ||= nil %>
+<% unless from_reply_form %>
+  <p><%= link_to 'reply', new_comment_posts_path(comment.id) %></p>
+<% end %>
+<b>Comment by : <%=  comment.user.try(:first_name) %></b>
+
+<%if (user_signed_in? && (current_user.role == 'admin') || (current_user.id == comment.user_id)) %>    
+<b> <%= link_to 'Delete Comment', [comment.post, comment],method: :delete,data: { confirm: 'Are you sure?' } , class: "btn btn-primary"%></b>
+<% end %>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -38,15 +40,15 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-   gem 'better_errors'
+  gem 'better_errors'
   gem 'better_errors-pry'
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -61,24 +63,25 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'devise'
 gem 'activeadmin'
-gem 'cancancan'
-gem 'rubocop'
-gem 'jquery-rails'
-gem 'draper'
-gem 'pundit'
 gem 'bootstrap-sass', '~> 3.4.1'
-gem 'sassc-rails', '>= 2.1.0'
-gem 'pry', '~> 0.12.2'
-gem 'letter_opener', group: :development
+gem 'cancancan'
 gem 'carrierwave', '~> 1.0'
-gem 'omniauth-google-oauth2', '~> 0.2.2'
-gem 'google-api-client', '~> 0.9.1'
+gem 'closure_tree'
+gem 'commontator', '~> 4.11.1'
+gem 'devise'
 gem 'devise_invitable', '~> 2.0.0'
-gem 'ratyrate' # star rating
-gem 'social-share-button'
+gem 'draper'
+gem 'google-api-client', '~> 0.9.1'
 gem 'impressionist' # view count
+gem 'jquery-rails'
 gem 'kaminari'
-gem 'rmagick'
+gem 'letter_opener', group: :development
+gem 'omniauth-google-oauth2', '~> 0.2.2'
+gem 'pry', '~> 0.12.2'
+gem 'pundit'
+gem 'ratyrate' # star rating
+gem 'rubocop'
+gem 'sassc-rails', '>= 2.1.0'
+gem 'social-share-button'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

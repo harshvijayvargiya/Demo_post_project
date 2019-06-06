@@ -1,12 +1,15 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
-  resources :posts do 
-    collection do 
-        get :all_user_post
-        get :download_file
+  resources :posts do
+    resources :comments
+    collection do
+      get '/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
+      get :all_user_post
+      get :download_file
     end
-  end  
-
+  end
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -20,5 +23,4 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'welcome/index'
   root 'welcome#index'
-
 end
