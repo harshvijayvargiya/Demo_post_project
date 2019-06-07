@@ -1,18 +1,19 @@
 
 <p id="notice"><%= notice %></p>
-
+<% if current_user %><!--  This if for rating -->
+<% if @post.attachment_url   %> <!-- This if for without image post -->
 <p>
   <strong>Attachment:</strong>
   <div><%= image_tag @post.attachment.url, class: "fixshow_image_size" %></div>
 </p>
+Attachment: <%= rating_for @post, 'attachment', star: 5, enable_half: true, cancel_hint: 'Cancel this rating!' %>
 
+<%end%>
 <p>
   <strong>Content:</strong>
   <%= @post.content %>
 </p>
 
-<% if current_user %>
-Attachment: <%= rating_for @post, 'attachment', star: 5, enable_half: true, cancel_hint: 'Cancel this rating!' %>
 <br>
 Content: <%= rating_for @post, "content" , star: 5, enable_half: true%><br>
 <% end %>

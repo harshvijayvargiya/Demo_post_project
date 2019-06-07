@@ -15,11 +15,21 @@
   <tbody>
     <% @posts.each do |post| %>
     <tr>
-      <td><%= image_tag post.attachment.url, class: "fix_image_size" %></td>
+      <%#binding.pry%>
+      <% if post.attachment_url   %>
+      <td><%= image_tag post.attachment_url, class: "fix_image_size" %></td>
+      <%else%>
+      <td><%= %></td>
+      <%end%>
+      
       <td><b><%= post.content %></b></td>
-
+      <% if post.attachment_url %>
       <td><%= link_to "Download" , download_file_posts_path(post), class: 'btn btn-primary'%></td>
+      <%else%>
+      <td><%= %></td>
+      <%end%>
       <td><%= link_to 'Show', post, class: 'btn btn-primary' %><% if post.comments.count != 0 %><span class="badge"><%= post.comments.count %> </span><% end %></a><br>
+      <%#end%>
       </td>
 
     </tr>

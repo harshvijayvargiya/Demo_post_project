@@ -2,9 +2,6 @@
 
 class CommentsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  def new
-    @comment = Comment.new(parent_id: params[:parent_id])
-  end
 
   def index
     @comments = @post.comments.order(created_at: :desc)

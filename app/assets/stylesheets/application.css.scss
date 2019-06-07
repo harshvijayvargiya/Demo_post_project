@@ -125,19 +125,19 @@ button {
 }
 
 /* footer */
-.footer {
+/*.footer {
  margin-top: 5px;
  padding-top: 9px;
  border-top: 2px solid black;
  position: fixed;
  left: 0;
- bottom: 1px auto;
+ bottom: 1px auto ;
  width: 100%;
  background-color: grey;
  color: white;
  text-align: center;
 
-}
+}*/
 footer a {
   color: #555;
 }
@@ -277,7 +277,7 @@ footer ul li {
     overflow-x: hidden;
   }
   #image_profile{
-    height: 50px auto;
+    height: 50px ;
     width: 50px;
     float: right;
     margin: 20px auto;

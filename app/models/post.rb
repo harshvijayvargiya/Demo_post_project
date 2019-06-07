@@ -5,7 +5,7 @@ class Post < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
-  paginates_per  2
+  paginates_per  1
 
   mount_uploader :attachment
 
@@ -24,15 +24,5 @@ class Post < ApplicationRecord
   def increase_visit
     self.count += 1
     save!
-  end
-
-  def abc
-    puts 'aaa'
-  end
-
-   private
-
-  def ab(params)
-    puts "bb #{params}"
   end
  end

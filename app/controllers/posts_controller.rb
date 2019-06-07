@@ -26,15 +26,15 @@ class PostsController < InheritedResources::Base
   end
 
   def index
-    @posts = current_user.posts.order('attachment').page(params[:page]).per(2)
+    @posts = current_user.posts.order('attachment')
     @posts = Post.search(params[:search]) if params[:search]
   end
 
   def all_user_post
     if user_signed_in? && current_user.role == 'admin'
-      @posts = Post.all.page(params[:page]).per(2)
+      @posts = Post.all
     else
-      @posts = Post.is_public.order('attachment').page(params[:page]).per(2)
+      @posts = Post.is_public.order('attachment')
       @posts = Post.search(params[:search]) if params[:search]
     end
   end

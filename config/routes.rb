@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
     collection do
-      get '/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
       get :all_user_post
       get :download_file
     end
