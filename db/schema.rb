@@ -160,6 +160,11 @@ ActiveRecord::Schema.define(version: 2019_06_06_100259) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "role"
+    t.string "contact_number"
+    t.string "profile_picture"
     t.string "provider"
     t.string "uid"
     t.string "token"
@@ -174,11 +179,6 @@ ActiveRecord::Schema.define(version: 2019_06_06_100259) do
     t.string "invited_by_type"
     t.integer "invited_by_id"
     t.integer "invitations_count", default: 0
-    t.string "first_name"
-    t.string "last_name"
-    t.string "role"
-    t.string "contact_number"
-    t.string "profile_picture"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"

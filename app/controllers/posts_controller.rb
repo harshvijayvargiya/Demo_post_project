@@ -29,18 +29,20 @@ class PostsController < InheritedResources::Base
 
   def index
     # binding.pry
-    @posts = current_user.posts.order('attachment').page(params[:page]).per(2)
+    @posts = current_user.posts.order('attachment')
     @posts = Post.search(params[:search]) if params[:search]
   end
 
   def all_user_post
-    # binding.pry
-    if user_signed_in? && current_user.role == 'admin'
-      @posts = Post.all.page(params[:page]).per(2)
+    if current_user.role != 'admin'
+      @posts = []
+      @posts << Post.is_public.order('attachment')
+      @posts <<  Post.where('user_id = ? AND status = ?', current_user.id, 'private')
+      @posts = @posts.flatten
     else
-      @posts = Post.is_public.order('attachment').page(params[:page]).per(2)
-      @posts = Post.search(params[:search]) if params[:search]
-    end
+      @posts = Post.all
+      # @postss = current_user.posts.is_private.order('attachment')
+    end 
   end
 
   private

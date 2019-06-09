@@ -1,31 +1,39 @@
-<table class="table table-hover">
-  <thead>
-    <div class="row">
-      <tr>
-        <th><div class="col-xs-6">Attachment</div></th>
-        <th><div class="col-xs-12">Content</div></th>
-        <th><div class="col-xs-12">Download</div></th>
-        <th colspan="3"><div class="col-xs-10">Show</div></th>
-      </tr>
-    </div>
-  </thead>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Attachment</th>
+          <th>Content</th>
+          <th>Download</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <%if post.attachment.url %>
+              <td><%= image_tag post.attachment.url, class: "fix_image_size" %></td>
+            <% else %>
+              <td><%= image_tag 'images.png', class: "fix_image_size" %></td>
+            <% end %>
+            <td>
+              <strong><%= post.content %></strong>
+            </td>
+            <td><%= link_to "Download" , download_file_posts_path(post), class: 'btn btn-primary'%></td>
+            <td>
+              <%= link_to 'Show', post, class: 'btn btn-primary' %>
+              <% if post.comments.count != 0 %>
+                <span class="badge"><%= post.comments.count %> </span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-  <tbody>
-    <% @posts.each do |post| %>
-    <tr>
-      <td><%= image_tag post.attachment.url, class: "fix_image_size" %></td>
-      <td><b><%= post.content %></b></td>
-
-      <td><%= link_to "Download" , download_file_posts_path(post), class: 'btn btn-primary'%></td>
-      <td><%= link_to 'Show', post, class: 'btn btn-primary' %><% if post.comments.count != 0 %><span class="badge"><%= post.comments.count %> </span><% end %></a><br>
-      </td>
-
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 <div>
   <%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %>
 </div>

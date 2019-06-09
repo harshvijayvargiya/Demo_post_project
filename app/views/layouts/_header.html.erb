@@ -14,7 +14,9 @@
         </form>
         <%= link_to 'Home',root_url, class:'btn btn-primary'%>
         <%= current_user.first_name%>
+        <% if current_user.profile_picture.url %>
         <a class="dropdown-toggle" data-toggle="dropdown"> <%= image_tag current_user.profile_picture.url, id: "image_profile"%>
+        <%end%>  
           <ul class="dropdown-menu">
             <li><%= link_to "#{current_user.first_name}'s Post", posts_path, class: 'btn' %></li>
             <li> <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn' %></li>

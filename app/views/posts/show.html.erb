@@ -1,21 +1,22 @@
 
 <p id="notice"><%= notice %></p>
-
+<% if current_user %>
+<% if @post.attachment.url%>
 <p>
   <strong>Attachment:</strong>
   <div><%= image_tag @post.attachment.url, class: "fixshow_image_size" %></div>
 </p>
-
 <p>
   <strong>Content:</strong>
   <%= @post.content %>
 </p>
 
-<% if current_user %>
 Attachment: <%= rating_for @post, 'attachment', star: 5, enable_half: true, cancel_hint: 'Cancel this rating!' %>
 <br>
 Content: <%= rating_for @post, "content" , star: 5, enable_half: true%><br>
 <% end %>
+<%end%>
+
 <%#=binding.pry%>
 <div>
     <%if (user_signed_in? && (current_user.role == 'admin') || (current_user.id == @post.user_id)) %>

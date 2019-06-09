@@ -1,38 +1,28 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
-  belongs_to :user
-
-  has_many :comments, dependent: :destroy
 
   paginates_per  2
-
   mount_uploader :attachment
-
   ratyrate_rateable 'attachment', 'content'
-
   is_impressionable counter_cache: true
-
+  # after_create :set_defaults
+  belongs_to :user
+  has_many :comments, dependent: :destroy
   scope :is_public, -> { where(status: 'public') }
   scope :is_private, -> { where(status: 'private') }
-
-  def self.search(search)
-    where('attachment LIKE ?', "%#{search}%")
-    where('content LIKE ?', "%#{search}%")
- end
 
   def increase_visit
     self.count += 1
     save!
   end
-
-  def abc
-    puts 'aaa'
-  end
-
-   private
-
-  def ab(params)
-    puts "bb #{params}"
+  private
+  # binding.pry
+  # def set_defaults
+  #   self.attachment = 'ruby.png' if self.attachment.nil?
+  # end
+  def self.search(search)
+    where('attachment LIKE ?', "%#{search}%")
+    where('content LIKE ?', "%#{search}%")
   end
  end
