@@ -12,9 +12,12 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
      <%= render 'layouts/header' %>
+    <% flash.each do |key, value| %>
+      <p class="alert alert-<%= key %>"><%= value %></p>
+    <% end %>
+    <p class="alert alert-success"><%= notice %></p>
+    <p class="alert alert-danger"><%= alert %></p>
     <div class="container-fluid">
       <%= yield %>
     <%= render 'layouts/footer' %>

@@ -7,6 +7,37 @@
 <%= submit_tag "Search" %>
 <% end %>
 
-<%= render 'post' %>
+<%if current_user.role == 'admin'%>
+  <strong>Private Posts : </strong>
+  <span class="badge"><%= @pr = Post.is_private.count %></span>
+<%else%>
+  <strong>Private Posts : </strong>
+  <span class="badge"><%= @pr = current_user.posts.is_private.count %></span>
+<%end%>
+
+<strong>Public Posts : </strong>
+<span class="badge"><%= @pb = Post.is_public.count %> </span>
+
+<strong>All Posts : </strong>
+<span class="badge"><%= @pr+@pb %> </span>
+
+<%= select_tag(:all_posts_by_status, options_for_select([['Public', :public], ['Private', :private]]), :prompt => 'Select a Status') %>
+
+<div class="all_posts_listing">
+
+<%= render 'posts_by_status' %>
+
 <%#= paginate @posts %>
 
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#all_posts_by_status").on('change', function(){
+      statusValue = $(this).children("option:selected").val();
+      $.ajax({
+        url: "<%=  all_posts_by_status_posts_path %>", 
+        method: 'GET',
+        data: { status: statusValue } 
+    });
+  });
+});
+</script>

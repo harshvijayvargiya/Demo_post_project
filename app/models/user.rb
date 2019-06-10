@@ -6,7 +6,6 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
                                                                message: 'only allows letters' }, length: { maximum: 50 }
   validates :contact_number, presence: true, numericality: { only_integer: true }, length: { minimum: 10 }
-  validates :profile_picture, presence: true
   has_many :comments, dependent: :destroy
 
   ratyrate_rater

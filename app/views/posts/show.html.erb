@@ -17,24 +17,24 @@ Attachment: <%= rating_for @post, 'attachment', star: 5, enable_half: true, canc
 <br>
 Content: <%= rating_for @post, "content" , star: 5, enable_half: true%><br>
 <% end %>
-<%#=binding.pry%>
+
 <div>
-    <%if (user_signed_in? && (current_user.role == 'admin') || (current_user.id == @post.user_id)) %>
-    <td><%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' %></td> |
-    <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %></td>
-    <% end %>
-    <div>
-        <td><%= link_to 'Back', posts_path, class: 'btn btn-primary' %></td>
-        <br><br>
-        <%= social_share_button_tag(@post.attachment) %>
-    </div>
+  <%if (user_signed_in? && (current_user.role == 'admin') || (current_user.id == @post.user_id)) %>
+  <td><%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' %></td> |
+  <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %></td>
+  <% end %>
+  <div>
+    <td><%= link_to 'Back', posts_path, class: 'btn btn-primary' %></td>
+    <br><br>
+    <%= social_share_button_tag(@post.attachment) %>
+  </div>
 
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
+  <h2>Add a comment:</h2>
+  <%= render 'comments/form' %>
 
-<h2>Comments</h2>
-<%= render @post.comments %>
+  <h2>Comments</h2>
+  <%= render @post.comments %>
 
-    <b><%= "#{@post.count} views" %></b><br>
-    <b><%= "#{@post.impressionist_count} views" %></b><br>
+  <b><%= "#{@post.count} views" %></b><br>
+  <b><%= "#{@post.impressionist_count} views" %></b><br>
 </div>

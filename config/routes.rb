@@ -7,12 +7,13 @@ Rails.application.routes.draw do
     collection do
       get :all_user_post
       get :download_file
+      get :posts_by_status
+      get :all_posts_by_status
     end
   end
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  get 'welcome/index'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
@@ -22,4 +23,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'welcome/index'
   root 'welcome#index'
+  match '*path' => 'errors#routing', via: :all
+
 end

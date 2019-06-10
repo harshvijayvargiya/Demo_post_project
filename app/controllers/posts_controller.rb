@@ -5,7 +5,9 @@ class PostsController < InheritedResources::Base
 
   def create
     @post = current_user.posts.create(post_params)
+    # TODO: handle validation errors
     @post.save
+    flash[:success] = "Post Created"
     redirect_to posts_path
   end
 
@@ -31,12 +33,38 @@ class PostsController < InheritedResources::Base
   end
 
   def all_user_post
-    if user_signed_in? && current_user.role == 'admin'
-      @posts = Post.all
+    if current_user.role != 'admin'
+      @posts = []
+      @posts << Post.is_public.order('attachment')
+      @posts <<  Post.where('user_id = ? AND status = ?', current_user.id, 'private')
+      # @posts << current_user.posts.is_private.order('attachment')
+      @posts = @posts.flatten
+      @posts = Post.search(params[:search]) if params[:search]
     else
-      @posts = Post.is_public.order('attachment')
+      @posts = Post.all
       @posts = Post.search(params[:search]) if params[:search]
     end
+  end
+
+  def posts_by_status
+    #binding.pry
+    @posts = if params[:status] == 'public'
+                 current_user.posts.is_public
+               elsif params[:status] == 'private'
+                 Post.where('user_id = ? AND status = ?', current_user.id, 'private')
+               else
+                 current_user.posts
+               end
+  end
+
+  def all_posts_by_status
+    @posts = if params[:status] == 'public'
+                 Post.is_public
+                elsif params[:status] == 'private' && current_user.role == 'admin'
+                 Post.is_private
+                else
+                 Post.where('user_id = ? AND status = ?', current_user.id, 'private')
+               end
   end
 
   private

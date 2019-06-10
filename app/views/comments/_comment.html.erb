@@ -4,8 +4,6 @@
   <strong>Comment:</strong>
   <%= comment.body %>
 </p>
-<%# binding.pry %>
-
 <b>Comment by : <%=  comment.user.try(:first_name) %></b>
 
 <%if (user_signed_in? && (current_user.role == 'admin') || (current_user.id == comment.user_id)) %>    

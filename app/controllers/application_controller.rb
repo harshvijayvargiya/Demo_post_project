@@ -4,6 +4,7 @@ require 'google/apis/people_v1'
 require 'google/api_client/client_secrets.rb'
 
 class ApplicationController < ActionController::Base
+  
   before_action :authenticate_user!
   People = Google::Apis::PeopleV1
   def contacts
