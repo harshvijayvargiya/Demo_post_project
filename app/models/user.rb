@@ -7,6 +7,7 @@ class User < ApplicationRecord
                                                                message: 'only allows letters' }, length: { maximum: 50 }
   validates :contact_number, presence: true, numericality: { only_integer: true }, length: { minimum: 10 }
   has_many :comments, dependent: :destroy
+  validates :email, email_format: { message: "doesn't look like an email address" }
 
   ratyrate_rater
   mount_uploader :profile_picture

@@ -1,27 +1,43 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
 
-<h1>All User Posts</h1>
+    <div class="col-sm-4">
+        <%if current_user.role == 'admin'%>
+          <p>
+            <strong>Private Posts : </strong>
+            <span class="badge" id='action'><%= @pr = Post.is_private.count %></span>
+          </p>
+        <%else%>
+          <p>
+            <strong>Private Posts : </strong>
+            <span class="badge" id='action'><%= @pr = current_user.posts.is_private.count %></span>
+          </p>
+        <%end%>
+          <p>
+            <strong >Public Posts : </strong>
+            <span class="badge" id='action'><%= @pb = Post.is_public.count %> </span>
+          </p>
+          <p>  
+            <strong>All Posts : </strong>
+            <span class="badge" id='action'><%= @pr+@pb %> </span>
+          </p>
+    </div>
 
-<%= form_tag( all_user_post_posts_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
-<%= submit_tag "Search" %>
-<% end %>
+    <div class="col-sm-4" align="center">
+        <h1>All User Posts</h1>
+        <strong class="btn dropdown-toggle" id="action">
+          <%= select_tag(:all_posts_by_status, options_for_select([['Public', :public], ['Private', :private]]), :prompt => 'Select a Status')%>
+        </strong>
 
-<%if current_user.role == 'admin'%>
-  <strong>Private Posts : </strong>
-  <span class="badge"><%= @pr = Post.is_private.count %></span>
-<%else%>
-  <strong>Private Posts : </strong>
-  <span class="badge"><%= @pr = current_user.posts.is_private.count %></span>
-<%end%>
+        <%= form_tag( all_user_post_posts_path, :method => "get", id: "search-form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+          <%= submit_tag "Search" %>
+        <% end %>
+    </div>
+</div>
 
-<strong>Public Posts : </strong>
-<span class="badge"><%= @pb = Post.is_public.count %> </span>
 
-<strong>All Posts : </strong>
-<span class="badge"><%= @pr+@pb %> </span>
 
-<%= select_tag(:all_posts_by_status, options_for_select([['Public', :public], ['Private', :private]]), :prompt => 'Select a Status') %>
 
 <div class="all_posts_listing">
 

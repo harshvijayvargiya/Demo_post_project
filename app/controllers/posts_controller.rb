@@ -5,7 +5,6 @@ class PostsController < InheritedResources::Base
 
   def create
     @post = current_user.posts.create(post_params)
-    # TODO: handle validation errors
     @post.save
     flash[:success] = "Post Created"
     redirect_to posts_path
@@ -13,7 +12,6 @@ class PostsController < InheritedResources::Base
 
   def show
     @post = Post.find(params[:id])
-    # TODO
     @post.increase_visit if @post.count == 0
     impressionist @post if @post.count
   end
@@ -29,7 +27,7 @@ class PostsController < InheritedResources::Base
 
   def index
     @posts = current_user.posts.order('attachment')
-    @posts = Post.search(params[:search]) if params[:search]
+    @posts = current_user.posts.search(params[:search]) if params[:search]
   end
 
   def all_user_post
@@ -37,9 +35,15 @@ class PostsController < InheritedResources::Base
       @posts = []
       @posts << Post.is_public.order('attachment')
       @posts <<  Post.where('user_id = ? AND status = ?', current_user.id, 'private')
-      # @posts << current_user.posts.is_private.order('attachment')
       @posts = @posts.flatten
-      @posts = Post.search(params[:search]) if params[:search]
+
+      if params[:search]
+        @posts = []
+        @posts << Post.is_public.search(params[:search])
+        @posts << current_user.posts.is_private.search(params[:search])
+        @posts = @posts.flatten
+      end 
+
     else
       @posts = Post.all
       @posts = Post.search(params[:search]) if params[:search]
@@ -47,14 +51,13 @@ class PostsController < InheritedResources::Base
   end
 
   def posts_by_status
-    #binding.pry
     @posts = if params[:status] == 'public'
                  current_user.posts.is_public
                elsif params[:status] == 'private'
                  Post.where('user_id = ? AND status = ?', current_user.id, 'private')
                else
                  current_user.posts
-               end
+              end
   end
 
   def all_posts_by_status
@@ -64,7 +67,7 @@ class PostsController < InheritedResources::Base
                  Post.is_private
                 else
                  Post.where('user_id = ? AND status = ?', current_user.id, 'private')
-               end
+              end
   end
 
   private

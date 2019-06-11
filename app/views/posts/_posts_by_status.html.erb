@@ -15,25 +15,56 @@
   <tbody>
     <% @posts.each do |post| %>
     <tr>
-      <% if post.attachment_url   %>
-      <td><%= image_tag post.attachment_url, class: "fix_image_size" %></td>
+      <% if post.attachment_url %>
+        <td>
+          <%if post.user.profile_picture.url %>
+            <p><%= image_tag post.user.profile_picture.url, class: "i1"%></p>
+          <%else%>
+            <p><%= image_tag 'anonymous_image.jpeg', class: "i1"%></p>
+          <%end%>
+
+          <strong id="action">
+            <%="#{post.user.first_name} post :"%>
+          </strong>
+          
+          <br>
+          
+          <%= image_tag post.attachment_url, class: "fix_image_size" %>
+        </td>
       <%else%>
-      <td><%= image_tag 'image_not_found.png', class: "fix_image_size" %></td>
+        <td>
+          <%if post.user.profile_picture.url %>
+            <p><%= image_tag post.user.profile_picture.url, class: "i1"%></p>
+          <%else%>
+            <p><%= image_tag 'anonymous_image.jpeg', class: "i1"%></p>
+          <%end%>
+
+          <strong id="action">
+            <%="#{post.user.first_name} post :"%>
+          </strong>
+          
+          <br>
+          
+          <%= image_tag 'image_not_found2.png', class: "fix_image_size" %>
+        </td>
       <%end%>
       
       <td><b><%= post.content %></b></td>
       <% if post.attachment_url %>
-      <td><%= link_to "Download" , download_file_posts_path(post), class: 'btn btn-primary'%></td>
+      <td><%= link_to "Download" , download_file_posts_path(post),id:'action', class: 'btn btn-primary'%></td>
       <%else%>
-      <td><%= %></td>
+      <td><% %></td>
       <%end%>
 
       <%if (user_signed_in? && (current_user.role == 'admin') || (current_user.id == post.user_id)) %>
-      <td><%= link_to 'Edit', edit_post_path(post), class: 'btn btn-primary' %></td> |
-      <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %></td>
+      <td><%= link_to 'Edit', edit_post_path(post),id:'action', class: 'btn btn-primary' %></td> |
+      <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' },id:'action', class: 'btn btn-primary' %></td>
+      <%else%>
+      <td><% %></td>
+      <td><% %></td>
       <% end %>
 
-      <td><%= link_to 'Show', post, class: 'btn btn-primary' %>
+      <td><%= link_to 'Show', post,id:'action', class: 'btn btn-primary' %>
         <% if post.comments.count != 0 %>
           <span class="badge"><%= post.comments.count %> </span>
         <% end %></a><br>
@@ -42,9 +73,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<div>
-  <%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %>
-</div>

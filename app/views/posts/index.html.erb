@@ -1,34 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
+<strong class="btn dropdown-toggle" id="action"><%= select_tag(:posts_by_status, options_for_select([['Public', :public], ['Private', :private], ['All', :all]]), :prompt => 'Select a Status') %></strong><br>
 
 <%= form_tag( posts_path, :method => "get", id: "search-form") do %>
 <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
 <%= submit_tag "Search" %>
 <% end %>
 
-<strong>Private Posts : </strong>
-<span class="badge"><%= @pr = current_user.posts.is_private.count %> </span>
+<br>
+  <strong>Private Posts : </strong>
+  <span class="badge" id='action'>
+      <%= @pr = current_user.posts.is_private.count %>
+  </span>
 
-<strong>Public Posts : </strong>
-<span class="badge"><%= @pb = @posts.is_public.count %> </span>
+  <strong>Public Posts : </strong>
+  <span class="badge" id='action'>
+      <%= @pb = @posts.is_public.count %>
+  </span>
 
-<strong>All Posts : </strong>
-<span class="badge"><%= @pr+@pb %> </span>
-
-
-<%= select_tag(:posts_by_status, options_for_select([['Public', :public], ['Private', :private], ['All', :all]]), :prompt => 'Select a Status') %>
+  <strong>All Posts : </strong>
+  <span class="badge" id='action'>
+      <%= @pr+@pb %>
+  </span>
+<br>
 
 <div class="posts_listing">
 
 <%= render 'posts_by_status' %>
-
-
-<br>
-<div>
-<%= link_to 'All Post', all_user_post_posts_path, class: 'btn btn-primary' %>
-</div>
-<br>
 
 <%#= paginate @posts, outer_window: 3 %>
 
