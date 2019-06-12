@@ -29,19 +29,15 @@
           <%= select_tag(:all_posts_by_status, options_for_select([['Public', :public], ['Private', :private]]), :prompt => 'Select a Status')%>
         </strong>
 
-        <%= form_tag( all_user_post_posts_path, :method => "get", id: "search-form") do %>
+        <%= form_tag( all_user_post_posts_path, :method => "get", id: "search_form", remote: true) do %>
           <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
           <%= submit_tag "Search" %>
         <% end %>
     </div>
 </div>
-
-
-
-
 <div class="all_posts_listing">
-
-<%= render 'posts_by_status' %>
+  <%= render 'posts_by_status' %>
+</div>
 
 <%#= paginate @posts %>
 
@@ -53,7 +49,14 @@
         url: "<%=  all_posts_by_status_posts_path %>", 
         method: 'GET',
         data: { status: statusValue } 
+      });
+    });
+
+    $("#search_form").keyup(function() {
+      $.ajax({
+        url: "<% all_user_post_posts_path %>",
+        data: {search: $(this).serialize()}
+      });
     });
   });
-});
 </script>

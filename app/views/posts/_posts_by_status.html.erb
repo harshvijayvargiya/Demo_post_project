@@ -4,6 +4,7 @@
       <tr>
         <th><div class="col-xs-6">Attachment</div></th>
         <th><div class="col-xs-12">Content</div></th>
+        <th><div class="col-xs-12">Status</div></th>
         <th><div class="col-xs-12">Download</div></th>
         <th><div class="col-xs-12">Edit</div></th>
         <th><div class="col-xs-12">Destroy</div></th>
@@ -50,21 +51,28 @@
       <%end%>
       
       <td><b><%= post.content %></b></td>
+      <td><b><%= post.status %></b></td>
+      
+      <%= form_tag destroy_multiple_posts_path, method: :delete do %>
+      <%= submit_tag "Delete selected", :class => 'btn btn-primary btn-xs' %>
+        <td><%= check_box_tag "post_ids[]", @posts.ids, false, class: 'selectable' %></td>
+      <% end %>
       <% if post.attachment_url %>
-      <td><%= link_to "Download" , download_file_posts_path(post),id:'action', class: 'btn btn-primary'%></td>
+        <td><%= link_to "Download" , download_file_posts_path(post),id:'action', class: 'btn btn-primary'%></td>
       <%else%>
-      <td><% %></td>
+        <td><% %></td>
       <%end%>
 
       <%if (user_signed_in? && (current_user.role == 'admin') || (current_user.id == post.user_id)) %>
-      <td><%= link_to 'Edit', edit_post_path(post),id:'action', class: 'btn btn-primary' %></td> |
-      <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' },id:'action', class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_post_path(post),id:'action', class: 'btn btn-primary' %></td> |
+        <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' },id:'action', class: 'btn btn-primary' %></td>
       <%else%>
-      <td><% %></td>
-      <td><% %></td>
+        <td><% %></td>
+        <td><% %></td>
       <% end %>
 
       <td><%= link_to 'Show', post,id:'action', class: 'btn btn-primary' %>
+        
         <% if post.comments.count != 0 %>
           <span class="badge"><%= post.comments.count %> </span>
         <% end %></a><br>

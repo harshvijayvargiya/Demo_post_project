@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get :download_file
       get :posts_by_status
       get :all_posts_by_status
+      delete :destroy_multiple
     end
   end
 
@@ -24,5 +25,4 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
   match '*path' => 'errors#routing', via: :all
-
 end

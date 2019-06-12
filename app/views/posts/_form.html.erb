@@ -1,33 +1,36 @@
 <%= form_with(model: post, local: true) do |form| %>
 <% if post.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+  <div id="error_explanation">
+    <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-  <ul>
-    <% post.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
+    <ul>
+      <% post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
-<div class="field", id="image_preview" >
-  <%= form.label :attachment %>
-  <%= form.file_field :attachment, :onchange => "readURL(this);" %>
-</div>
+  <div class="field", id="image_preview" >
+    <%= form.label :attachment %>
+    <%= form.file_field :attachment, :onchange => "readURL(this);" %>
+  </div>
 
-<div class="field">
-  <%= form.label :content %>
-  <%= form.text_area :content %>
-</div>
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
 
-<div class="field"> <h4><b><%= form.label :Select_Status %></b></h4> <%=
-form.select :status, ['public', 'private'], {:prompt => "Select Status"} %>
-</div>
+  <div class="field">
+    <h4>
+      <strong><%= form.label :Select_Status %></strong>
+    </h4> 
+      <%=form.select :status, ['public', 'private'], {:prompt => "Select Status"} %>
+  </div>
 
-<div class="actions">
-  <%= form.submit %>
-</div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
 <% end %>
 
 <script>

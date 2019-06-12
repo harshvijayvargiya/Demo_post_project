@@ -1,29 +1,35 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
-<strong class="btn dropdown-toggle" id="action"><%= select_tag(:posts_by_status, options_for_select([['Public', :public], ['Private', :private], ['All', :all]]), :prompt => 'Select a Status') %></strong><br>
-
-<%= form_tag( posts_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
-<%= submit_tag "Search" %>
-<% end %>
 
 <br>
   <strong>Private Posts : </strong>
   <span class="badge" id='action'>
-      <%= @pr = current_user.posts.is_private.count %>
+    <%= @pr = current_user.posts.is_private.count %>
   </span>
 
   <strong>Public Posts : </strong>
   <span class="badge" id='action'>
-      <%= @pb = @posts.is_public.count %>
+    <%= @pb = @posts.is_public.count %>
   </span>
 
   <strong>All Posts : </strong>
   <span class="badge" id='action'>
-      <%= @pr+@pb %>
+    <%= @pr+@pb %>
   </span>
-<br>
+<br><br>
+
+<strong class="btn dropdown-toggle" id="action">
+  <%= select_tag(:posts_by_status, options_for_select([['Public', :public], ['Private', :private], ['All', :all]]), :prompt => 'Select a Status') %>
+</strong>
+
+<br><br>
+
+<%= form_tag( posts_path, :method => "get", id: "search_form", remote: true) do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 
 <div class="posts_listing">
 
@@ -40,6 +46,13 @@
         method: 'GET',
         data: { status: statusValue } 
       });
+    });
+    
+    $("#search_form").keyup(function() {
+     $.ajax({
+        url: "<% posts_path %>",
+        data: {search: $(this).serialize()}
+     });
     });
   });
 </script>
