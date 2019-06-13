@@ -74,7 +74,7 @@ class PostsController < InheritedResources::Base
 
   def destroy_multiple
     binding.pry
-    Post.destroy(params[:post_ids])
+    Post.destroy(params[:post_id])
 
     respond_to do |format|
       format.html { redirect_to posts_path }
