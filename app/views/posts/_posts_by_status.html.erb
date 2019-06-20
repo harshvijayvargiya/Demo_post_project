@@ -17,7 +17,7 @@
 
     <%= form_tag destroy_multiple_posts_path, method: :delete do %>
     <% @posts.each do |post| %>
-    <%if (user_signed_in? && (current_user.role == 'admin') || (current_user.id == post.user_id)) %>
+    <%if (current_user.role == 'admin') || (current_user.id == post.user_id) %>
       <td>
         <%= check_box_tag "post_id[]", post.id, false, class: 'selectable'%><br>
       </td>

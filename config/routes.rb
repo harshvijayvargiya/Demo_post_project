@@ -2,6 +2,19 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
+  
+  namespace :api, defaults: { format: :json } do
+   resources :posts do
+      collection do
+        get :all_user_post
+        get :download_file
+        get :posts_by_status
+        get :all_posts_by_status
+        delete :destroy_multiple
+      end
+    end
+  end
+
   resources :posts do
     resources :comments
     collection do
@@ -16,6 +29,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   mount Sidekiq::Web => '/sidekiq'
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
