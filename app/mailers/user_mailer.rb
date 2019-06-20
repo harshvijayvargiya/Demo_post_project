@@ -1,9 +1,9 @@
 class UserMailer < ApplicationMailer
-default from: "harsh@thoughtwin.com"
+default from: "no-reply@thoughtwin.com"
 
   def sample_email(email)
     # binding.pry
     @email = email
-    mail(to: email, subject: 'Welcome Email')
+    mail(to: email, subject: 'Invites You to touch with us')
   end
 end
