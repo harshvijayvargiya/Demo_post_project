@@ -15,12 +15,11 @@ class Post < ApplicationRecord
 
   def self.search(search)
     if search
-    where('attachment LIKE ?', "%#{search}%")
-    where('content LIKE ?', "%#{search}%")
-  else
-    Post.all
-  end
-
+      where('attachment LIKE ?', "%#{search}%")
+      where('content LIKE ?', "%#{search}%")
+    else
+      Post.all
+    end
   end
 
   def increase_visit

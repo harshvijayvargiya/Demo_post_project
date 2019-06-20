@@ -73,7 +73,7 @@ class PostsController < InheritedResources::Base
   end
 
   def destroy_multiple
-    binding.pry
+    # binding.pry
     Post.destroy(params[:post_id])
 
     respond_to do |format|

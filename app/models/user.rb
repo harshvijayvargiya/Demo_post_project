@@ -35,6 +35,10 @@ class User < ApplicationRecord
   #   end
   # end
 
+  def after_confirmation
+    HardWorker.perform_in(1.minutes, self.email)
+  end
+
   def self.from_omniauth(auth)
     if user = User.find_by_email(auth.info.email)
       user.provider = auth.provider
