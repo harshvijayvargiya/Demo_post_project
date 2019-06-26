@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_05_121846) do
+ActiveRecord::Schema.define(version: 2019_06_26_065304) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -85,6 +85,13 @@ ActiveRecord::Schema.define(version: 2019_06_05_121846) do
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
+  create_table "msgs", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "overall_averages", force: :cascade do |t|
     t.string "rateable_type"
     t.integer "rateable_id"
@@ -151,14 +158,11 @@ ActiveRecord::Schema.define(version: 2019_06_05_121846) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
     t.string "first_name"
     t.string "last_name"
     t.string "role"
     t.string "contact_number"
     t.string "profile_picture"
-=======
->>>>>>> 6a286b25823f4a7e06ce3c0519e137dd5d1257fc
     t.string "provider"
     t.string "uid"
     t.string "token"
@@ -173,14 +177,6 @@ ActiveRecord::Schema.define(version: 2019_06_05_121846) do
     t.string "invited_by_type"
     t.integer "invited_by_id"
     t.integer "invitations_count", default: 0
-<<<<<<< HEAD
-=======
-    t.string "first_name"
-    t.string "last_name"
-    t.string "role"
-    t.string "contact_number"
-    t.string "profile_picture"
->>>>>>> 6a286b25823f4a7e06ce3c0519e137dd5d1257fc
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"

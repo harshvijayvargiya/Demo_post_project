@@ -2,7 +2,10 @@
 
 class PostsController < InheritedResources::Base
   impressionist actions: [:show], unique: [:user_id]
-
+  # before_action :execute_this, if: :this_is_true?
+  # before_action do
+  #   binding.pry
+  # end
   def create
     @post = current_user.posts.create(post_params)
     @post.save
@@ -84,6 +87,12 @@ class PostsController < InheritedResources::Base
   end
 
   private
+
+  # def this_is_true?
+  #   # binding.pry
+  #   Rails.logger.debug "This is being executed before #{params[:action]}"
+  #   true
+  # end
 
   def post_params
     params.require(:post).permit(:attachment, :content, :status)

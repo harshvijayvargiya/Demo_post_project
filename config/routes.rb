@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 require 'sidekiq/web'
 Rails.application.routes.draw do
+  resources :msgs
   post '/rate' => 'rater#create', :as => 'rate'
+  mount Sidekiq::Web => '/sidekiq'
   
   namespace :api, defaults: { format: :json } do
    resources :posts do
@@ -28,7 +30,6 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  mount Sidekiq::Web => '/sidekiq'
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',

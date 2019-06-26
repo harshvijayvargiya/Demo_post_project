@@ -1,0 +1,71 @@
+=> [32m#<MsgsController:0x00007fa2550d6048[0m
+ @_action_has_layout[32m=[0m[1;36mtrue[0m,
+ @_action_name[32m=[0m[31m[1;31m"[0m[31mcreate[1;31m"[0m[31m[0m,
+ @_config[32m=[0m{},
+ @_lookup_context[32m=[0m
+  [32m#<ActionView::LookupContext:0x00007fa2550d5f80[0m
+   @cache[32m=[0m[1;36mtrue[0m,
+   @details[32m=[0m{[33m:locale[0m=>[[33m:en[0m], [33m:formats[0m=>[[33m:html[0m], [33m:variants[0m=>[], [33m:handlers[0m=>[[33m:raw[0m, [33m:erb[0m, [33m:html[0m, [33m:builder[0m, [33m:ruby[0m, [33m:arb[0m, [33m:coffee[0m, [33m:jbuilder[0m]},
+   @details_key[32m=[0m[1;36mnil[0m,
+   @prefixes[32m=[0m[[31m[1;31m"[0m[31mmsgs[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31minherited_resources/base[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mapplication[1;31m"[0m[31m[0m],
+   @rendered_format[32m=[0m[1;36mnil[0m,
+   @view_paths[32m=[0m
+    [32m#<ActionView::PathSet:0x00007fa2550d5e90[0m
+     @paths[32m=[0m
+      [[32m#<ActionView::OptimizedFileSystemResolver:0x0000000005f97d38[0m
+        @cache[32m=[0m[32m#<ActionView::Resolver::Cache:0x5f97d10 keys=4 queries=0>[0m,
+        @path[32m=[0m[31m[1;31m"[0m[31m/home/thoughtwin/simple_projcts/Demo_post_project/app/views[1;31m"[0m[31m[0m,
+        @pattern[32m=[0m[31m[1;31m"[0m[31m:prefix/:action{.:locale,}{.:formats,}{+:variants,}{.:handlers,}[1;31m"[0m[31m[0m[32m>[0m,
+       [32m#<ActionView::OptimizedFileSystemResolver:0x0000000005f84670[0m
+        @cache[32m=[0m[32m#<ActionView::Resolver::Cache:0x5f84648 keys=4 queries=0>[0m,
+        @path[32m=[0m[31m[1;31m"[0m[31m/home/thoughtwin/.rvm/gems/ruby-2.6.3/gems/devise_token_auth-1.1.0/app/views[1;31m"[0m[31m[0m,
+        @pattern[32m=[0m[31m[1;31m"[0m[31m:prefix/:action{.:locale,}{.:formats,}{+:variants,}{.:handlers,}[1;31m"[0m[31m[0m[32m>[0m,
+       [32m#<ActionView::OptimizedFileSystemResolver:0x0000000005f861a0[0m
+        @cache[32m=[0m[32m#<ActionView::Resolver::Cache:0x5f86178 keys=4 queries=0>[0m,
+        @path[32m=[0m[31m[1;31m"[0m[31m/home/thoughtwin/.rvm/gems/ruby-2.6.3/gems/devise_invitable-2.0.1/app/views[1;31m"[0m[31m[0m,
+        @pattern[32m=[0m[31m[1;31m"[0m[31m:prefix/:action{.:locale,}{.:formats,}{+:variants,}{.:handlers,}[1;31m"[0m[31m[0m[32m>[0m,
+       [32m#<ActionView::OptimizedFileSystemResolver:0x0000000005f86ab0[0m
+        @cache[32m=[0m[32m#<ActionView::Resolver::Cache:0x5f86a60 keys=4 queries=0>[0m,
+        @path[32m=[0m[31m[1;31m"[0m[31m/home/thoughtwin/.rvm/gems/ruby-2.6.3/gems/devise-4.6.2/app/views[1;31m"[0m[31m[0m,
+        @pattern[32m=[0m[31m[1;31m"[0m[31m:prefix/:action{.:locale,}{.:formats,}{+:variants,}{.:handlers,}[1;31m"[0m[31m[0m[32m>[0m,
+       [32m#<ActionView::OptimizedFileSystemResolver:0x0000000005f87f50[0m
+        @cache[32m=[0m[32m#<ActionView::Resolver::Cache:0x5f87ed8 keys=4 queries=0>[0m,
+        @path[32m=[0m[31m[1;31m"[0m[31m/home/thoughtwin/.rvm/gems/ruby-2.6.3/gems/commontator-4.11.1/app/views[1;31m"[0m[31m[0m,
+        @pattern[32m=[0m[31m[1;31m"[0m[31m:prefix/:action{.:locale,}{.:formats,}{+:variants,}{.:handlers,}[1;31m"[0m[31m[0m[32m>[0m,
+       [32m#<ActionView::OptimizedFileSystemResolver:0x0000000005f5ca58[0m
+        @cache[32m=[0m[32m#<ActionView::Resolver::Cache:0x5f5ca30 keys=4 queries=0>[0m,
+        @path[32m=[0m[31m[1;31m"[0m[31m/home/thoughtwin/.rvm/gems/ruby-2.6.3/gems/activeadmin-2.0.0/app/views[1;31m"[0m[31m[0m,
+        @pattern[32m=[0m[31m[1;31m"[0m[31m:prefix/:action{.:locale,}{.:formats,}{+:variants,}{.:handlers,}[1;31m"[0m[31m[0m[32m>[0m,
+       [32m#<ActionView::OptimizedFileSystemResolver:0x0000000005f5ed30[0m
+        @cache[32m=[0m[32m#<ActionView::Resolver::Cache:0x5f5ed08 keys=4 queries=0>[0m,
+        @path[32m=[0m[31m[1;31m"[0m[31m/home/thoughtwin/.rvm/gems/ruby-2.6.3/gems/kaminari-core-1.1.1/app/views[1;31m"[0m[31m[0m,
+        @pattern[32m=[0m[31m[1;31m"[0m[31m:prefix/:action{.:locale,}{.:formats,}{+:variants,}{.:handlers,}[1;31m"[0m[31m[0m[32m>[0m][32m>[0m[32m>[0m,
+ @_params[32m=[0m
+  <[1;34;4mActionController[0m::[1;34;4mParameters[0m {[31m[1;31m"[0m[31mutf8[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m✓[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mauthenticity_token[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31myMTGwsoHrXAEYzvKDBMc5TAo9mSNL9B3ujwd3ATq40hWeuY9qfzgzEUyFXKxrx/w/8g20A+Tq+O1lhukqAVN7w==[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mmsg[1;31m"[0m[31m[0m=><[1;34;4mActionController[0m::[1;34;4mParameters[0m {[31m[1;31m"[0m[31mname[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mfvg[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mdescription[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mdfg[1;31m"[0m[31m[0m} [35mpermitted[0m: [1;36mfalse[0m>, [31m[1;31m"[0m[31mcommit[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mCreate Msg[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mcontroller[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mmsgs[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31maction[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mcreate[1;31m"[0m[31m[0m} [35mpermitted[0m: [1;36mfalse[0m>,
+ @_request[32m=[0m
+  [32m#<ActionDispatch::Request:0x00007fa2550d7330[0m
+   @env[32m=[0m
+    {[31m[1;31m"[0m[31mrack.version[1;31m"[0m[31m[0m=>[[1;34m1[0m, [1;34m3[0m],
+     [31m[1;31m"[0m[31mrack.errors[1;31m"[0m[31m[0m=>[32m#<IO:<STDERR>>[0m,
+     [31m[1;31m"[0m[31mrack.multithread[1;31m"[0m[31m[0m=>[1;36mtrue[0m,
+     [31m[1;31m"[0m[31mrack.multiprocess[1;31m"[0m[31m[0m=>[1;36mfalse[0m,
+     [31m[1;31m"[0m[31mrack.run_once[1;31m"[0m[31m[0m=>[1;36mfalse[0m,
+     [31m[1;31m"[0m[31mSCRIPT_NAME[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mQUERY_STRING[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mSERVER_PROTOCOL[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mHTTP/1.1[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mSERVER_SOFTWARE[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mpuma 3.12.1 Llamas in Pajamas[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mGATEWAY_INTERFACE[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mCGI/1.2[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mREQUEST_METHOD[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mPOST[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mREQUEST_PATH[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m/msgs[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mREQUEST_URI[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m/msgs[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mHTTP_VERSION[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mHTTP/1.1[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mHTTP_HOST[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mlocalhost:3000[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mHTTP_CONNECTION[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mkeep-alive[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mCONTENT_LENGTH[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m195[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mHTTP_CACHE_CONTROL[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mmax-age=0[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mHTTP_ORIGIN[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mhttp://localhost:3000[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mHTTP_UPGRADE_INSECURE_REQUESTS[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m1[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mCONTENT_TYPE[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mapplication/x-www-form-urlencoded[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mHTTP_USER_AGENT[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mMozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mHTTP_ACCEPT[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mtext/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mHTTP_REFERER[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mhttp://localhost:
