@@ -4,7 +4,6 @@ require 'google/apis/people_v1'
 require 'google/api_client/client_secrets.rb'
 
 class ApplicationController < ActionController::Base
-  
   before_action :authenticate_user!
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -33,11 +32,10 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    added_attrs = [:first_name, :email,:role]
+    added_attrs = %i[first_name email role]
 
     devise_parameter_sanitizer.permit(:sign_up, keys: added_attrs)
-    devise_parameter_sanitizer.permit(:account_update,keys: added_attrs)
+    devise_parameter_sanitizer.permit(:account_update, keys: added_attrs)
     # devise_parameter_sanitizer.permit(:accept_invitation, keys: [:email, :password])
   end
-
 end

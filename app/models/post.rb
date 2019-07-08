@@ -30,10 +30,9 @@ class Post < ApplicationRecord
   private
 
   def set_default
-    if self.status == ""
+    if status == ''
       self.status = 'private'
       save!
-    end  
+    end
   end
-
 end

@@ -16,7 +16,6 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
-
   # def self.from_omniauth(auth)
   #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
   #   user.token = auth.credentials.token
@@ -37,10 +36,10 @@ class User < ApplicationRecord
   # end
 
   def after_confirmation
-    message = self.contact_number
-    fname = self.first_name
-    HardWorker.perform_in(1.minutes, self.email) # send welcome mail after 1.mint
-    TwilioTextMessenger.new(message , fname).call  # getting mobile no(message) and name(fname)
+    message = contact_number
+    fname = first_name
+    HardWorker.perform_in(1.minutes, email) # send welcome mail after 1.mint
+    TwilioTextMessenger.new(message, fname).call # getting mobile no(message) and name(fname)
   end
 
   def self.from_omniauth(auth)
@@ -58,6 +57,5 @@ class User < ApplicationRecord
     end
     end
 
-    private
-
+  private
 end

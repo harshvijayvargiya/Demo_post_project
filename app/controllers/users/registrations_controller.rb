@@ -10,22 +10,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-#   def create
-#   super
-#   @user = User.new(configure_sign_up_params)
-#   respond_to do |format|
-#     if @user.save
-#       message = " '#{@user.firstname}' was just added."
-#       TwilioTextMessenger.new(message).call
-#   binding.pry
-#       format.html { redirect_to @user, notice: 'successfully created.' }
-#       format.json { render :show, status: :created, location: @user }
-#     else
-#       format.html { render :new }
-#       format.json { render json: @user.errors, status: :unprocessable_entity }
-#     end
-#   end
-# end
+  #   def create
+  #   super
+  #   @user = User.new(configure_sign_up_params)
+  #   respond_to do |format|
+  #     if @user.save
+  #       message = " '#{@user.firstname}' was just added."
+  #       TwilioTextMessenger.new(message).call
+  #   binding.pry
+  #       format.html { redirect_to @user, notice: 'successfully created.' }
+  #       format.json { render :show, status: :created, location: @user }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @user.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # GET /resource/edit
   # def edit

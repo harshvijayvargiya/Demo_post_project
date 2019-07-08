@@ -5,21 +5,21 @@
         <%if current_user.role == 'admin'%>
           <p>
             <strong>Private Posts : </strong>
-            <span class="badge" id='action'><%= @pr = Post.is_private.count %></span>
+            <span class="badge" id='action'><%= @private_post_count = Post.is_private.count %></span>
           </p>
         <%else%>
           <p>
             <strong>Private Posts : </strong>
-            <span class="badge" id='action'><%= @pr = current_user.posts.is_private.count %></span>
+            <span class="badge" id='action'><%= @private_post_count = current_user.posts.is_private.count %></span>
           </p>
         <%end%>
           <p>
             <strong >Public Posts : </strong>
-            <span class="badge" id='action'><%= @pb = Post.is_public.count %> </span>
+            <span class="badge" id='action'><%= @public_post_count = Post.is_public.count %> </span>
           </p>
           <p>  
             <strong>All Posts : </strong>
-            <span class="badge" id='action'><%= @pr+@pb %> </span>
+            <span class="badge" id='action'><%= @private_post_count + @public_post_count %> </span>
           </p>
     </div>
 

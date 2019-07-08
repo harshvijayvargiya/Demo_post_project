@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Api::PostsController < ApplicationController
-    impressionist actions: [:show], unique: [:user_id]
+  impressionist actions: [:show], unique: [:user_id]
 
   def create
     post = current_user.posts.create(post_params)
@@ -32,34 +34,33 @@ class Api::PostsController < ApplicationController
   end
 
   def all_user_post
-    
-      posts = Post.all
-      render json: posts
+    posts = Post.all
+    render json: posts
   end
 
   def posts_by_status
     posts = if params[:status] == 'public'
-                 current_user.posts.is_public.order('created_at DESC')
-                 render json: posts
-               elsif params[:status] == 'private'
-                 Post.where('user_id = ? AND status = ?', current_user.id, 'private').order('created_at DESC')
-                 render json: posts
-               else
-                 current_user.posts.order('created_at DESC')
-                 render json: posts
+              current_user.posts.is_public.order('created_at DESC')
+              render json: posts
+            elsif params[:status] == 'private'
+              Post.where('user_id = ? AND status = ?', current_user.id, 'private').order('created_at DESC')
+              render json: posts
+            else
+              current_user.posts.order('created_at DESC')
+              render json: posts
               end
   end
 
   def all_posts_by_status
     posts = if params[:status] == 'public'
-                 Post.is_public.order('created_at DESC')
-                 render json: posts
-                elsif params[:status] == 'private' && current_user.role == 'admin'
-                 Post.is_private.order('created_at DESC')
-                 render json: posts
-                else
-                 Post.where('user_id = ? AND status = ?', current_user.id, 'private').order('created_at DESC')
-                 render json: posts
+              Post.is_public.order('created_at DESC')
+              render json: posts
+            elsif params[:status] == 'private' && current_user.role == 'admin'
+              Post.is_private.order('created_at DESC')
+              render json: posts
+            else
+              Post.where('user_id = ? AND status = ?', current_user.id, 'private').order('created_at DESC')
+              render json: posts
               end
   end
 
@@ -71,8 +72,7 @@ class Api::PostsController < ApplicationController
       format.json { head :no_content }
       render json: posts
     end
-
-  end
+    end
 
   private
 

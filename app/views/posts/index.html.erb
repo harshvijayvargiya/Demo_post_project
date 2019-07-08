@@ -5,17 +5,17 @@
 <br>
   <strong>Private Posts : </strong>
   <span class="badge" id='action'>
-    <%= @pr = current_user.posts.is_private.count %>
+    <%= @private_post_count = current_user.posts.is_private.count %>
   </span>
 
   <strong>Public Posts : </strong>
   <span class="badge" id='action'>
-    <%= @pb = @posts.is_public.count %>
+    <%= @public_post_count = @posts.is_public.count %>
   </span>
 
   <strong>All Posts : </strong>
   <span class="badge" id='action'>
-    <%= @pr+@pb %>
+    <%= @private_post_count + @public_post_count %>
   </span>
 <br><br>
 

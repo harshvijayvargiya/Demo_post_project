@@ -1,1 +1,3 @@
-json.partial! "msgs/msg", msg: @msg
+# frozen_string_literal: true
+
+json.partial! 'msgs/msg', msg: @msg

@@ -15,7 +15,7 @@ ActiveAdmin.register User do
   # end
 
   index do
-  # h3 link_to "All Podcast: #{Podcast.all.count}", "#", style: "color:black; margin-left:43%;text-decoration: none !important;font-size: 25px;"
+    # h3 link_to "All Podcast: #{Podcast.all.count}", "#", style: "color:black; margin-left:43%;text-decoration: none !important;font-size: 25px;"
 
     selectable_column
     # id_column
@@ -27,7 +27,7 @@ ActiveAdmin.register User do
     # column "Date" do |dat|
     #   "<p>#{dat.date.try(:strftime, "%m-%d-%Y" )}</p>".html_safe
     # end
-    column "Profile Picture" do |img|
+    column 'Profile Picture' do |img|
       "<a href='#{img.profile_picture}'><img src='#{img.profile_picture}' width='70'></a>".html_safe
     end
   end

@@ -1,12 +1,13 @@
 # frozen_string_literal: true
+
 require 'sidekiq/web'
 Rails.application.routes.draw do
   resources :msgs
   post '/rate' => 'rater#create', :as => 'rate'
   mount Sidekiq::Web => '/sidekiq'
-  
+
   namespace :api, defaults: { format: :json } do
-   resources :posts do
+    resources :posts do
       collection do
         get :all_user_post
         get :download_file

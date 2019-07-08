@@ -9,7 +9,7 @@ class PostsController < InheritedResources::Base
   def create
     @post = current_user.posts.create(post_params)
     @post.save
-    flash[:success] = "Post Created"
+    flash[:success] = 'Post Created'
     redirect_to posts_path
   end
 
@@ -37,7 +37,7 @@ class PostsController < InheritedResources::Base
     if current_user.role != 'admin'
       @posts = []
       @posts << Post.is_public.order('attachment')
-      @posts <<  Post.where('user_id = ? AND status = ?', current_user.id, 'private')
+      @posts << Post.where('user_id = ? AND status = ?', current_user.id, 'private')
       @posts = @posts.flatten
 
       if params[:search]
@@ -45,33 +45,31 @@ class PostsController < InheritedResources::Base
         @posts << Post.is_public.search(params[:search])
         @posts << current_user.posts.is_private.search(params[:search])
         @posts = @posts.flatten
-      end 
+      end
 
     else
       @posts = Post.all.order('created_at DESC')
-      if params[:search]
-        @posts = Post.search(params[:search]) 
-      end
+      @posts = Post.search(params[:search]) if params[:search]
     end
   end
 
   def posts_by_status
     @posts = if params[:status] == 'public'
-                 current_user.posts.is_public.order('created_at DESC')
-               elsif params[:status] == 'private'
-                 Post.where('user_id = ? AND status = ?', current_user.id, 'private').order('created_at DESC')
-               else
-                 current_user.posts.order('created_at DESC')
+               current_user.posts.is_public.order('created_at DESC')
+             elsif params[:status] == 'private'
+               Post.where('user_id = ? AND status = ?', current_user.id, 'private').order('created_at DESC')
+             else
+               current_user.posts.order('created_at DESC')
               end
   end
 
   def all_posts_by_status
     @posts = if params[:status] == 'public'
-                 Post.is_public.order('created_at DESC')
-                elsif params[:status] == 'private' && current_user.role == 'admin'
-                 Post.is_private.order('created_at DESC')
-                else
-                 Post.where('user_id = ? AND status = ?', current_user.id, 'private').order('created_at DESC')
+               Post.is_public.order('created_at DESC')
+             elsif params[:status] == 'private' && current_user.role == 'admin'
+               Post.is_private.order('created_at DESC')
+             else
+               Post.where('user_id = ? AND status = ?', current_user.id, 'private').order('created_at DESC')
               end
   end
 
@@ -83,7 +81,6 @@ class PostsController < InheritedResources::Base
       format.html { redirect_to posts_path }
       format.json { head :no_content }
     end
-
   end
 
   private

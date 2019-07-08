@@ -2,6 +2,7 @@
 
 class CommentsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+  before_action :find_user?, only: %i[show edit update user_destroy deactivate_listener]
 
   def index
     @comments = @post.comments.order(created_at: :desc)
