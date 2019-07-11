@@ -1,0 +1,38 @@
+<%#= form_with(model: multiplepost, local: true) do |form| %>
+<%= form_for @multiplepost do |f| %>
+  <% if multiplepost.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(multiplepost.errors.count, "error") %> prohibited this multiplepost from being saved:</h2>
+
+      <ul>
+      <% multiplepost.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :attchment %>
+    <%= f.file_field :attchment %>
+  </div>
+
+  <div class="field">
+    <%= f.label :article %>
+    <%= f.text_field :article %>
+  </div>
+
+  <h2>Add More Posts</h2>
+  <%= f.fields_for :tasks do |task| %>
+    <%= render 'task_fields', f: task %>
+  <% end %>
+
+  <div class="links">
+  <%= link_to_add_association 'Add More Posts', f, :tasks %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

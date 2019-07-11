@@ -1,0 +1,11 @@
+  <div class='nested-fields'>
+    <div class="field">
+      <%= f.label :attchment %>
+      <%= f.file_field :attchment %>
+    </div>
+    <div class="field">
+      <%= f.label :article %>
+      <%= f.text_field :article %>
+    </div>
+    <%= link_to_remove_association "Remove This Form", f %>
+  </div>

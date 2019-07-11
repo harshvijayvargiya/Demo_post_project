@@ -13,5 +13,6 @@
 //= require jquery
 //= require ratyrate
 //= require bootstrap-sprockets
+//= require cocoon
 //= require activestorage
 //= require_tree .

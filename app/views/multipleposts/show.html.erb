@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Attchment:</strong>
+  <%= @multiplepost.attchment %>
+</p>
+
+<p>
+  <strong>Article:</strong>
+  <%= @multiplepost.article %>
+</p>
+
+
+<% @multiplepost.tasks.each do |t| %>
+  <%# if t.attchment_url %>
+  <p>
+    <strong>Attchment:</strong>
+    <%=   t.attchment %>
+  </p>
+  <%#else%>
+    <%#= image_tag 'image_not_found2.png', class: "fix_image_size" %>
+  <%# end %>
+
+  <p>
+    <strong>Article:</strong>
+    <%= t.article %>
+  </p>
+
+<% end %>
+
+<%#= link_to 'Edit', edit_multiplepost_path(@multiplepost) %> 
+<%= link_to 'Back', multipleposts_path %>
+

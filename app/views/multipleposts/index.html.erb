@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Multipleposts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Attchment</th>
+      <th>Article</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @multipleposts.each do |multiplepost| %>
+      <tr>
+        <td><%= multiplepost.attchment %></td>
+        <td><%= multiplepost.article %></td>
+        <td><%= link_to 'Show', multiplepost %></td>
+        <td><%= link_to 'Edit', edit_multiplepost_path(multiplepost) %></td>
+        <td><%= link_to 'Destroy', multiplepost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Multiplepost', new_multiplepost_path %>
