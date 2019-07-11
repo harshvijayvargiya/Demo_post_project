@@ -119,6 +119,7 @@ GEM
     closure_tree (7.0.0)
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
+    cocoon (1.2.14)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -437,6 +438,7 @@ DEPENDENCIES
   carrierwave (~> 1.0)
   chromedriver-helper
   closure_tree
+  cocoon
   coffee-rails (~> 4.2)
   commontator (~> 4.11.1)
   devise

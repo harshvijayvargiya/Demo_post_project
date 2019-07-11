@@ -12,6 +12,9 @@ class Post < ApplicationRecord
 
   scope :is_public, -> { where(status: 'public') }
   scope :is_private, -> { where(status: 'private') }
+  scope :Posts_order,-> { order('created_at DESC') }
+  scope :current_user_private_post, -> { where('user_id = ? AND status = ?', User.current.id, 'private').order("created_at DESC") }
+
 
   def self.search(search)
     if search

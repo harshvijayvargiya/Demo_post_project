@@ -70,7 +70,7 @@
           <td><%= link_to 'Edit', edit_post_path(post),id:'action', class: 'btn btn-primary' %></td> |
           <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' },id:'action', class: 'btn btn-primary' %></td>
         <%else%>
-          <td><% %></td>
+          <td><%= link_to 'Share', edit_post_path(post),id:'action', class: 'btn btn-primary' %></td>
           <td><% %></td>
         <% end %>
 

@@ -29,15 +29,16 @@ class PostsController < InheritedResources::Base
   end
 
   def index
-    @posts = current_user.posts.order('created_at DESC')
+    @posts = current_user.posts.Posts_order # Posts_order for show latest post at top using scope
     @posts = current_user.posts.search(params[:search]) if params[:search]
   end
 
   def all_user_post
-    if current_user.role != 'admin'
+    # binding.pry
+    if !current_user.role
       @posts = []
-      @posts << Post.is_public.order('attachment')
-      @posts << Post.where('user_id = ? AND status = ?', current_user.id, 'private')
+      @posts << Post.is_public.Posts_order
+      @posts << Post.current_user_private_post # show current_user_private_post using scope
       @posts = @posts.flatten
 
       if params[:search]
@@ -48,28 +49,28 @@ class PostsController < InheritedResources::Base
       end
 
     else
-      @posts = Post.all.order('created_at DESC')
+      @posts = Post.all.Posts_order # Posts_order for show latest post at top using scope
       @posts = Post.search(params[:search]) if params[:search]
     end
   end
 
   def posts_by_status
     @posts = if params[:status] == 'public'
-               current_user.posts.is_public.order('created_at DESC')
+               current_user.posts.is_public.Posts_order # Posts_order for show latest post at top using scope
              elsif params[:status] == 'private'
-               Post.where('user_id = ? AND status = ?', current_user.id, 'private').order('created_at DESC')
+               Post.current_user_private_post # show current_user_private_post using scope
              else
-               current_user.posts.order('created_at DESC')
+               current_user.posts.Posts_order # Posts_order for show latest post at top using scope
               end
   end
 
   def all_posts_by_status
     @posts = if params[:status] == 'public'
-               Post.is_public.order('created_at DESC')
+               Post.is_public.Posts_order # Posts_order for show latest post at top
              elsif params[:status] == 'private' && current_user.role == 'admin'
-               Post.is_private.order('created_at DESC')
+               Post.is_private.Posts_order # Posts_order for show latest post at top using scope
              else
-               Post.where('user_id = ? AND status = ?', current_user.id, 'private').order('created_at DESC')
+               Post.current_user_private_post # show current_user_private_post using scope
               end
   end
 

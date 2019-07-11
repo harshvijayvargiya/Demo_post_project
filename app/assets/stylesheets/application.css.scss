@@ -47,6 +47,7 @@ label {
 
 input, textarea {
   font: 1em sans-serif;
+  
 
   border-radius: 1em;
   width: 300px;
@@ -294,6 +295,7 @@ footer ul li {
     padding: 3px;
     border:1px solid black;
     border-radius: 1em;
+    box-shadow: -3px -3px 11px -3px rgba(0, 0, 0, 0.5);
   }
   .fixshow_image_size{
     width: 100px;
@@ -302,6 +304,7 @@ footer ul li {
     margin: 3px;
     padding: 3px;
     border:1px solid black;
+    box-shadow: -3px -3px 11px -3px rgba(0, 0, 0, 0.5);
   }
 #action{
   color: black;
@@ -315,6 +318,7 @@ footer ul li {
   float: center;
   border:1px solid black;
   border-radius: 1em;
+  box-shadow: -3px -3px 11px -3px rgba(0, 0, 0, 0.5);
 }
 
 #btn1{
@@ -323,6 +327,7 @@ footer ul li {
   border-radius: 1em;
   margin: 4px;
   background: grey;
+  box-shadow: -3px -3px 11px -3px rgba(0, 0, 0, 0.5);
 }
 .i1{
   height: 20px ;
@@ -332,4 +337,5 @@ footer ul li {
   padding: 1px ;
   border:1px solid black;
   border-radius: 1em;
+  box-shadow: -3px -3px 11px -3px rgba(0, 0, 0, 0.5);
 }

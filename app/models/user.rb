@@ -35,6 +35,15 @@ class User < ApplicationRecord
   #   end
   # end
 
+  # for access current_user into model / check application controller
+  def self.current
+    Thread.current[:user]
+  end
+  def self.current=(user)
+    Thread.current[:user] = user
+  end
+
+
   def after_confirmation
     message = contact_number
     fname = first_name

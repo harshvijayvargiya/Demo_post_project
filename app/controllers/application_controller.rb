@@ -5,6 +5,8 @@ require 'google/api_client/client_secrets.rb'
 
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  before_action :set_current_user
+
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
   # respond_to :json
@@ -29,7 +31,13 @@ class ApplicationController < ActionController::Base
     render json: response
   end
 
+
   protected
+
+  # for access current user into model check user.rb file
+  def set_current_user
+      User.current = current_user
+  end
 
   def configure_permitted_parameters
     added_attrs = %i[first_name email role]
