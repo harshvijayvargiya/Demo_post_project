@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
   mount Sidekiq::Web => '/sidekiq'
 
+  mount GrapeSwaggerRails::Engine => '/swagger'
+
   namespace :api, defaults: { format: :json } do
     resources :posts do
       collection do
@@ -22,6 +24,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
     collection do
+      get :allll
       get :all_user_post
       get :download_file
       get :posts_by_status
@@ -42,5 +45,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'welcome/index'
   root 'welcome#index'
+
+  # Create custom link with new active_admin page
+  get '/admin/posts/first_page', to: 'admin/posts#first_page', as: :admin_first_page
+
+  # Show page not found while wrong url enter
   match '*path' => 'errors#routing', via: :all
 end

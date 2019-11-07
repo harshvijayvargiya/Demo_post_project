@@ -93,3 +93,4 @@ gem 'active_model_serializers'
 gem 'devise_token_auth'
 gem 'twilio-ruby', '~> 5.24.0'
 gem "cocoon"
+gem 'grape-swagger-rails'

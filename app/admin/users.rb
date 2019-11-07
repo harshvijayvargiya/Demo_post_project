@@ -14,6 +14,13 @@ ActiveAdmin.register User do
   #   permitted
   # end
 
+  config.filters = true
+  filter :role, as: :select, label: "Role"#, as: :select, collection: ->{ User.role }
+
+
+  scope("admin") { |scope| scope.where('role = ?', 'admin') }
+  scope("user") { |scope| scope.where('role = ?', 'user') }
+
   index do
     # h3 link_to "All Podcast: #{Podcast.all.count}", "#", style: "color:black; margin-left:43%;text-decoration: none !important;font-size: 25px;"
 
@@ -23,6 +30,10 @@ ActiveAdmin.register User do
     column :last_name
     column :email
     column :role
+    column :contact_number
+    column "Price", sortable: :price do |product|
+      number_to_currency product.price
+    end
     # column :date
     # column "Date" do |dat|
     #   "<p>#{dat.date.try(:strftime, "%m-%d-%Y" )}</p>".html_safe
