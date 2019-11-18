@@ -8,6 +8,26 @@ ActiveAdmin.setup do |config|
   #
   config.site_title = 'Demo Post Project'
 
+  config.namespace :admin do |admin|
+    admin.build_menu do |menu|
+      menu.add id: 'submenu-id', label: "Test" do |submenu|
+        submenu.add label: "post", url: "/admin/posts", html_options: { target: :blank }
+        admin.add_current_user_to_menu  submenu
+        admin.add_logout_button_to_menu submenu
+      end
+    end
+  end
+
+  config.namespace :admin do |admin|
+    admin.build_menu do |menu|
+      menu.add id: 'submenu-id', label: proc { 'SubMenu Title' }, parent: 'Blog' do |submenu_item|
+        submenu_item.add label: 'Post', url: '/admin/posts'
+        submenu_item.add label: 'Comment', url: '/admin/comments'
+      end
+    end
+  end
+
+
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #
