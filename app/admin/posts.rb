@@ -8,6 +8,10 @@ ActiveAdmin.register Post do
   collection_action :all_post, :method => :get
 
 
+  menu parent: 'PortFolio'
+  # menu label: 'User', parent: 'Appointments', priority: 1 ( is single line se bhi drop down ho jayega )
+  
+
   # hide/remove the delete option from activeAdmin
   actions :all, :except => [:destroy]
 

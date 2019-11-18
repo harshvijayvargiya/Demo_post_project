@@ -16,7 +16,8 @@ ActiveAdmin.register User do
 
   config.filters = true
   filter :role, as: :select, label: "Role"#, as: :select, collection: ->{ User.role }
-
+  menu parent: 'PortFolio'
+  # menu label: 'User', parent: 'Appointments', priority: 1 ( is single line se bhi drop down ho jayega )
 
   scope("admin") { |scope| scope.where('role = ?', 'admin') }
   scope("user") { |scope| scope.where('role = ?', 'user') }
