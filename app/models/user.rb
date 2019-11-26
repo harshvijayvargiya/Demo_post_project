@@ -16,6 +16,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
+  enum role: [:user, :admin]
+
   # def self.from_omniauth(auth)
   #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
   #   user.token = auth.credentials.token
@@ -36,6 +38,7 @@ class User < ApplicationRecord
   # end
 
   # for access current_user into model / check application controller
+
   def self.current
     Thread.current[:user]
   end
