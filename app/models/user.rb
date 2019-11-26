@@ -16,6 +16,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
+
+  # [:user, :admin] this is array that's why default role save is 0 (user)
   enum role: [:user, :admin]
 
   # def self.from_omniauth(auth)
