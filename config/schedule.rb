@@ -34,11 +34,10 @@
 
 set :output, "log/whenever.log"
 
-every 1.day, at: '10:00 am' do
-  # rake 'fetch'
-  command "cd /home/thoughtwin/simple_projcts/Demo_post_project/&& rails news:fetch"
+every 1.minutes do
+  rake "fetch"
   
-  command "cd /home/thoughtwin/simple_projcts/Demo_post_project/&& pg_dump -U postgres -h localhost demo_project_development3 > backup_using_cron_job.dump"
+  command "cd /home/thoughtwin/simple_projcts/Demo_post_project/&& ~/dump.sh"
 
   # command "rm /home/thoughtwin/simple_projcts/Demo_post_project/senger.new(message).call"
   
