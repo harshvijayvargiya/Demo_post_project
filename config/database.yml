@@ -8,12 +8,12 @@ development:
  <<: *default
  database: demo_project_development3
  username: postgres
- password: 'ubuntu'
+ password: 'postgres'
  host:     localhost
 
 test:
  <<: *default
  database: demo_project_test
  username: postgres
- password: 'ubuntu'
+ password: 'postgres'
  host:     localhost
