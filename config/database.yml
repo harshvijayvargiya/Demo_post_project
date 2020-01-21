@@ -11,9 +11,9 @@ development:
  password: 'postgres'
  host:     localhost
 
-test:
- <<: *default
- database: demo_project_test
- username: postgres
- password: 'postgres'
- host:     localhost
+production:
+  <<: *default
+  database: demo_project_test
+  username: postgres
+  password: 'postgres'
+  host:     localhost
