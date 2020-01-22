@@ -51,4 +51,7 @@ Rails.application.routes.draw do
 
   # Show page not found while wrong url enter
   match '*path' => 'errors#routing', via: :all
+  app.get('/', function(req, res){
+   res.redirect('/index');
+});
 end
