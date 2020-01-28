@@ -6,8 +6,13 @@ class PostsController < InheritedResources::Base
   # before_action do
   #   binding.pry
   # end
+
+  def method_name
+    @post = current_user.posts.build  
+  end
+
   def create
-    @post = current_user.posts.create(post_params)
+    @post = current_user.posts.build(post_params)
     @post.save
     flash[:success] = 'Post Created'
     redirect_to posts_path

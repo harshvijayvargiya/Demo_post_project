@@ -44,6 +44,11 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'welcome/index'
+
+  # diff way to assign root path when user signin
+  # authenticated :user do
+  #   root "docs#index", as: "authenticated_root"
+  # end
   root 'welcome#index'
 
   # Create custom link with new active_admin page
