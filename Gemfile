@@ -66,7 +66,7 @@ end
 gem 'activeadmin'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'cancancan'
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 gem 'closure_tree'
 gem 'commontator', '~> 4.11.1'
 gem 'devise'
